@@ -607,7 +607,10 @@ class GradInputMonitor(BaseMonitor):
             if isinstance(m, instance):
                 self.monitored_layers.append(name)
                 self.name_records_index[name] = []
-                if torch.__version__ >= torch.torch_version.TorchVersion('1.8.0'):
+                tv = torch.__version__.split('.')
+                # torch.torch_version.TorchVersion is not defined in old versions
+                # if torch.__version__ >= torch.torch_version.TorchVersion('1.8.0'):
+                if int(tv[0]) >= 1 and int(tv[1]) >= 8:
                     self.hooks.append(m.register_full_backward_hook(self.create_hook(name)))
                 else:
                     self.hooks.append(m.register_backward_hook(self.create_hook(name)))
