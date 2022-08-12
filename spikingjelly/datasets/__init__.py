@@ -144,7 +144,14 @@ def load_ATIS_bin(file_name: str) -> Dict:
         # `& 127` 是取其除了最高位，也就是剩下的7位
         raw_data = np.uint32(np.fromfile(bin_f, dtype=np.uint8))
         x = raw_data[0::5]
+        print('x: ', x[0:5])
+        x_converted = x.astype(np.int32)
+        print('x_converted: ', x_converted[0:5])
         y = raw_data[1::5]
+        print('y: ', y[0:5])
+        y_converted = y.astype(np.int32)
+        print('y_converted: ', y_converted[0:5])
+        print('_____________________________________')
         rd_2__5 = raw_data[2::5]
         p = (rd_2__5 & 128) >> 7
         t = ((rd_2__5 & 127) << 16) | (raw_data[3::5] << 8) | (raw_data[4::5])
