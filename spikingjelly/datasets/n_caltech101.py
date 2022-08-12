@@ -65,7 +65,7 @@ class NCaltech101(sjds.NeuromorphicDatasetFolder):
         return [
             ('Caltech101.zip', url, '66201824eabb0239c7ab992480b50ba3'),
             ('Caltech101_annotations.zip', url, '25e64cea645291e368db1e70f214988e'),
-            ('ReadMe(Caltech101)-SINAPSE-G.txt', url, 'd464b81684e0af3b5773555eb1d5b95c'),
+            # ('ReadMe(Caltech101)-SINAPSE-G.txt', url, 'd464b81684e0af3b5773555eb1d5b95c'),
             ('ReadMe(Caltech101).txt', url, '33632a7a5c46074c70509f960d0dd5e5')
         ]
 
