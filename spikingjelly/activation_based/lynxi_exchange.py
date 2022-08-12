@@ -206,7 +206,7 @@ try:
         return x
 
 
-    def compile_lynxi_model(output_dir: str, net: nn.Module, in_data_type: str = 'float32', out_data_type: str = 'float32', input_shape_dict : Dict = {}):
+    def compile_lynxi_model(output_dir: str, net: nn.Module, in_data_type: str = 'float32', out_data_type: str = 'float32', input_shape_dict : Dict = None):
         model = lyngor.DLModel()
         model.load(net, model_type='Pytorch', in_type=in_data_type, out_type=out_data_type,
                     inputs_dict=input_shape_dict)
