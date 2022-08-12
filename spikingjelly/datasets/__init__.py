@@ -142,10 +142,10 @@ def load_ATIS_bin(file_name: str) -> Dict:
     with open(file_name, 'rb') as bin_f:
         # `& 128` 是取一个8位二进制数的最高位
         # `& 127` 是取其除了最高位，也就是剩下的7位
-        raw_data = np.uint32(np.fromfile(bin_f, dtype=np.uint8))
-        x = raw_data[0::5].astype(np.int32)
-        y = raw_data[1::5].astype(np.int32)
-        rd_2__5 = raw_data[2::5].astype(np.int32)
+        raw_data = np.int32(np.fromfile(bin_f, dtype=np.uint8))
+        x = raw_data[0::5]
+        y = raw_data[1::5]
+        rd_2__5 = raw_data[2::5]
         p = (rd_2__5 & 128) >> 7
         t = ((rd_2__5 & 127) << 16) | (raw_data[3::5] << 8) | (raw_data[4::5])
     return {'t': t, 'x': x, 'y': y, 'p': p}
